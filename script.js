@@ -19,6 +19,9 @@ generateBtn.addEventListener("click", writePassword);
 // make generatePassword function 
 
 function generatePassword(){
+
+
+
   //Welcome user prompt
   window.alert("Welcome to Password Generator 5000: Written by Bryan Bentz");
   window.alert("Please bear with the Generator through these prompts");
@@ -59,7 +62,7 @@ function generatePassword(){
       }
 
       //prompt user for isNumeric
-      isNumber = window.prompt("Would you like to include Numeric? y/n")
+      isNumeric = window.prompt("Would you like to include Numeric? y/n")
 
       //checking for isNumberic crtieria
       while(isNumeric != "y" && isNumeric != "n"){
@@ -91,15 +94,94 @@ function generatePassword(){
       
     }
 
+
+
     console.log("passLength: " + passLength);
     console.log("isLowerCase: " + isLowerCase);
     console.log("isUpperCase: " + isUpperCase);
     console.log("isNumeric: " + isNumeric );
     console.log("isSpecialChar: " + isSpecialChar);
-      
-    
 
-  window.prompt
+
+    //randomly select character based on criteria
+    
+    
+      
+    //create password 
+    //for loop based on initial passLength
+    var lowerCase = 'abcdefghijklmonpqrstuvwxyz';
+    //create lowerCase array
+    var arrLower = lowerCase.split('');
+
+    var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var arrUpper = upperCase.split('');
+
+    var numbers = '1234567890';
+    var arrNumbers = numbers.split('');
+    console.log ( arrNumbers);
+
+    var specialChars = '~!@#$%^&*()_-+=<>?/|{}[]:;';
+    var arrSpecialChar = specialChars.split('');
+
+    const characterset = [];
+
+    if ( isLowerCase === 'y'){
+      for( i = 0 ; i < arrLower.length ; i++){
+        characterset.push(arrLower[i]);
+        console.log("Item added to array : " + arrLower[i]);
+      }
+      
+    } 
+      
+    if ( isUpperCase === 'y'){
+      for ( i = 0 ; i < arrUpper.length ; i++){
+        characterset.push(arrUpper[i]);
+        console.log("Item added to array : " + arrUpper[i]);
+      }
+      
+    } 
+
+    console.log("Pre ArrNumbers Loop Point")
+
+    if ( isNumeric === 'y' ){
+      console.log("In if statement ")
+      for( i = 0 ; i < arrNumbers.length ; i++){
+        characterset.push(arrNumbers[i]);
+        console.log("Item added to array : " + arrNumbers[i]);
+      }
+      
+    } 
+
+    if ( isSpecialChar === 'y'){
+      for( i = 0 ; i < arrSpecialChar.length ; i++){
+        characterset.push(arrSpecialChar[i]);
+        console.log("Item added to array : " + arrSpecialChar[i]);
+      }
+      
+    }
+
+
+
+    console.log(characterset);
+
+    //create an array of characters based on condition to pull from 
+    //do some math floor to complete return array
+
+    var newPassword = '';
+
+    for ( i = 0 ; i < passLength.length ; i++ ) {
+      var newChar = characterset[ Math.floor(Math.random() * characterset.length)];
+      newPassword.concat(newChar);
+      //newPassword.push(newChar);
+      console.log("Added item : " + newChar);
+      console.log("We have looped : " + i)
+
+    } 
+
+    console.log("if escape");
+    console.log(newPassword);
+
+  return newPassword ;
 
     //WHEN prompted for character types to include in the password
     // THEN I choose lowercase, uppercase, numeric, and/or special characters
