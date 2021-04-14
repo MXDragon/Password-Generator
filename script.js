@@ -14,13 +14,9 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-
-
 // make generatePassword function 
 
 function generatePassword(){
-
-
 
   //Welcome user prompt
   window.alert("Welcome to Password Generator 5000: Written by Bryan Bentz");
@@ -35,8 +31,6 @@ function generatePassword(){
       window.alert("Invalid Criteria");
       var passLength = window.prompt("Please enter a number between 8 and 128");
     }
-    
-    
     
       var isLowerCase = "n";
       var isUpperCase = "n";
@@ -83,25 +77,11 @@ function generatePassword(){
         
         window.alert("Failed to initlialize variables for Password.");
         window.alert("Please enter y to Lowercase, Uppcase, Numeric, or SpecialChar");
-        console.log("passLength: " + passLength);
-        console.log("isLowerCase: " + isLowerCase);
-        console.log("isUpperCase: " + isUpperCase);
-        console.log("isNumeric: " + isNumeric );
-        console.log("isSpecialChar: " + isSpecialChar);
-      
+       
       }
 
       
     }
-
-
-
-    console.log("passLength: " + passLength);
-    console.log("isLowerCase: " + isLowerCase);
-    console.log("isUpperCase: " + isUpperCase);
-    console.log("isNumeric: " + isNumeric );
-    console.log("isSpecialChar: " + isSpecialChar);
-
 
     //randomly select character based on criteria
     
@@ -113,22 +93,30 @@ function generatePassword(){
     //create lowerCase array
     var arrLower = lowerCase.split('');
 
+    //creating character set
     var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    //create array
     var arrUpper = upperCase.split('');
 
+    //create numbers character set
     var numbers = '1234567890';
+    //create numbers arrays
     var arrNumbers = numbers.split('');
-    console.log ( arrNumbers);
-
+    
+    //create SpecialChars set
     var specialChars = '~!@#$%^&*()_-+=<>?/|{}[]:;';
+    //create SpecialChars array
     var arrSpecialChar = specialChars.split('');
 
+    //Array to hold chracterset
     const characterset = [];
 
+
+    //Adding in elements to characterset
     if ( isLowerCase === 'y'){
       for( i = 0 ; i < arrLower.length ; i++){
         characterset.push(arrLower[i]);
-        console.log("Item added to array : " + arrLower[i]);
+   
       }
       
     } 
@@ -136,7 +124,7 @@ function generatePassword(){
     if ( isUpperCase === 'y'){
       for ( i = 0 ; i < arrUpper.length ; i++){
         characterset.push(arrUpper[i]);
-        console.log("Item added to array : " + arrUpper[i]);
+     
       }
       
     } 
@@ -147,7 +135,7 @@ function generatePassword(){
       console.log("In if statement ")
       for( i = 0 ; i < arrNumbers.length ; i++){
         characterset.push(arrNumbers[i]);
-        console.log("Item added to array : " + arrNumbers[i]);
+     
       }
       
     } 
@@ -155,46 +143,23 @@ function generatePassword(){
     if ( isSpecialChar === 'y'){
       for( i = 0 ; i < arrSpecialChar.length ; i++){
         characterset.push(arrSpecialChar[i]);
-        console.log("Item added to array : " + arrSpecialChar[i]);
+      
       }
       
     }
 
-
-
-    console.log(characterset);
-
     //create an array of characters based on condition to pull from 
     //do some math floor to complete return array
 
-    var newPassword = '';
-
-    for ( i = 0 ; i < passLength.length ; i++ ) {
-      var newChar = characterset[ Math.floor(Math.random() * characterset.length)];
-      newPassword.concat(newChar);
-      //newPassword.push(newChar);
-      console.log("Added item : " + newChar);
-      console.log("We have looped : " + i)
-
-    } 
-
-    console.log("if escape");
-    console.log(newPassword);
-
-  return newPassword ;
-
-    //WHEN prompted for character types to include in the password
-    // THEN I choose lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-    
-
-
+    var newPassword = "";
   
 
+    for ( i = 0 ; i < passLength ; i++ ) {
+      var newChar = characterset[ Math.floor(Math.random() * characterset.length)];
+      var newPassword = newPassword.concat(newChar);
+     
+
+    } 
+  return newPassword ;
 
 }
